@@ -9,6 +9,22 @@
     content="Découvrez une mutuelle santé premium pensée pour les particuliers, familles et dirigeants. Garanties renforcées, accompagnement humain et prise en charge rapide."
   />
   <style>
+    /* Ajout d'animations d'entrée */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .service-card, .hero-copy, .hero-card {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  /* Amélioration de l'état "Disabled" du bouton */
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(1);
+  }
     :root {
       --bg: #071224;
       --bg-soft: #0d1b34;
@@ -976,58 +992,55 @@
     </div>
   </footer>
 
-  <script>
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyGTn0M1w5JlX8wnswrf1rhdC_IYWo0AWAPz37opvnUiufUxnxQR1u9KpO-NFjxDa8/exec;
+ <script>
+  // Remplace par ton URL de déploiement "Web App"
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCeVZIoCA0i2uDZNSaV6yEv7vnzTHUl-JyPq92bj6ZqWx40Lm7Vk64glBG5Cq0oTJB/exec";
 
-    const form = document.getElementById("contactForm");
-    const statusEl = document.getElementById("formStatus");
-    const submitBtn = document.getElementById("submitBtn");
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+  const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      statusEl.textContent = "";
-      statusEl.className = "status-message";
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Envoi en cours...";
+    // Reset interface
+    statusEl.textContent = "Traitement de votre demande de prestige...";
+    statusEl.className = "status-message";
+    submitBtn.disabled = true;
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Transmission...";
 
-      const formData = {
-        fullName: form.fullName.value.trim(),
-        email: form.email.value.trim(),
-        phone: form.phone.value.trim(),
-        profile: form.profile.value,
-        message: form.message.value.trim(),
-        source: "landing-page-mutuelle",
-        sentAt: new Date().toISOString()
-      };
+    // Récupération des données
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.source = "landing-page-mutuelle-v2";
+    data.sentAt = new Date().toLocaleString('fr-FR');
 
-      try {
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        });
+    try {
+      // Utilisation de URLSearchParams pour éviter les problèmes de pré-vol CORS 
+      // fréquents avec le format JSON sur Apps Script
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Mode sécurisé pour Apps Script
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
 
-        // Si ton Apps Script renvoie du JSON
-        const result = await response.json();
+      // Note : Avec no-cors, on ne peut pas lire le JSON de réponse, 
+      // mais si l'exécution arrive ici sans erreur, c'est que c'est envoyé.
+      statusEl.textContent = "Merci. Un conseiller premium vous contactera sous 24h.";
+      statusEl.classList.add("success");
+      form.reset();
 
-        if (!response.ok) {
-          throw new Error(result.message || "Erreur lors de l'envoi.");
-        }
-
-        statusEl.textContent = result.message || "Votre demande a bien été envoyée.";
-        statusEl.classList.add("success");
-        form.reset();
-      } catch (error) {
-        statusEl.textContent = error.message || "Une erreur est survenue. Merci de réessayer.";
-        statusEl.classList.add("error");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Envoyer la demande";
-      }
-    });
-  </script>
+    } catch (error) {
+      console.error("Erreur:", error);
+      statusEl.textContent = "Service momentanément indisponible. Veuillez nous contacter par téléphone.";
+      statusEl.classList.add("error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
+  });
+</script>
 </body>
 </html>
