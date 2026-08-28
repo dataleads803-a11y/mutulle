@@ -410,7 +410,10 @@
             </div>
 
             <div class="form-footer">
-              <p class="form-note">En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.</p>
+             <input type="checkbox" id="consent" name="consent" required />
+                <span class="checkbox-label">
+                  J'accepte d'être contacté par téléphone par J&V afin de recevoir une proposition concernant une complémentaire santé.
+                </span>
               <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer la demande</button>
             </div>
             <p id="formStatus" class="status-message" aria-live="polite"></p>
