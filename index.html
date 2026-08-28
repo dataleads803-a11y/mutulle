@@ -1014,7 +1014,6 @@ async function getUserIP() {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Reset interface
   statusEl.textContent = "Traitement de votre demande de prestige...";
   statusEl.className = "status-message";
   submitBtn.disabled = true;
@@ -1025,17 +1024,21 @@ form.addEventListener("submit", async (e) => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
   
-  // Ajout de l'IP et des métadonnées
   data.ip = await getUserIP();
   data.source = "landing-page-mutuelle-v2";
   data.sentAt = new Date().toLocaleString('fr-FR');
 
+  // Conversion en paramètres d'URL pour contourner les restrictions CORS de JSON
+  const payload = new URLSearchParams(data);
+
   try {
     await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      mode: "no-cors", // Requis pour Google Apps Script
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: payload.toString()
     });
 
     statusEl.textContent = "Merci. Un conseiller premium vous contactera sous 24h.";
