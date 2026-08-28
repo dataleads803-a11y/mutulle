@@ -4,27 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mutuelle Premium Santé | Protection haut de gamme</title>
-  <meta
-    name="description"
-    content="Découvrez une mutuelle santé premium pensée pour les particuliers, familles et dirigeants. Garanties renforcées, accompagnement humain et prise en charge rapide."
-  />
+  <meta name="description" content="Découvrez une mutuelle santé premium pensée pour les particuliers, familles et dirigeants. Garanties renforcées, accompagnement humain et prise en charge rapide." />
   <style>
-    /* Ajout d'animations d'entrée */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-  .service-card, .hero-copy, .hero-card {
-    animation: fadeInUp 0.6s ease forwards;
-  }
+    .service-card, .hero-copy, .hero-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
 
-  /* Amélioration de l'état "Disabled" du bouton */
-  .btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    filter: grayscale(1);
-  }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      filter: grayscale(1);
+    }
+    
     :root {
       --bg: #071224;
       --bg-soft: #0d1b34;
@@ -46,16 +42,8 @@
       --transition: 0.3s ease;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
@@ -67,631 +55,162 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(calc(100% - 32px), var(--container));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 88px 0;
-    }
-
-    .section-header {
-      max-width: 760px;
-      margin-bottom: 42px;
-    }
-
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(calc(100% - 32px), var(--container)); margin-inline: auto; }
+    .section { padding: 88px 0; }
+    .section-header { max-width: 760px; margin-bottom: 42px; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--gold-soft);
-      margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--gold-soft); margin-bottom: 14px;
     }
-
     .eyebrow::before {
-      content: "";
-      width: 40px;
-      height: 1px;
+      content: ""; width: 40px; height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    h1, h2, h3 {
-      line-height: 1.1;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
+    h1, h2, h3 { line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.5rem, 5vw, 5rem); max-width: 10ch; }
+    h2 { font-size: clamp(2rem, 3vw, 3.25rem); margin-bottom: 16px; }
+    p.lead { font-size: 1.1rem; color: var(--text-soft); max-width: 62ch; }
+    .muted { color: var(--text-soft); }
 
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      max-width: 10ch;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 3vw, 3.25rem);
-      margin-bottom: 16px;
-    }
-
-    p.lead {
-      font-size: 1.1rem;
-      color: var(--text-soft);
-      max-width: 62ch;
-    }
-
-    .muted {
-      color: var(--text-soft);
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 600;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent;
+      font-weight: 600; transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
       cursor: pointer;
     }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: linear-gradient(135deg, #f1d377 0%, #d4af37 45%, #b88a1d 100%);
-      color: #0c1220;
-      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.28);
+      color: #0c1220; box-shadow: 0 12px 30px rgba(212, 175, 55, 0.28);
     }
-
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.04); color: var(--text);
+      border-color: rgba(255, 255, 255, 0.16); backdrop-filter: blur(10px);
     }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.08); }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    /* Header */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 18, 36, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px);
+      background: rgba(7, 18, 36, 0.72); border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-
-    .header-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
+    .header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -0.02em; }
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
+      width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center;
       background: linear-gradient(135deg, rgba(212, 175, 55, 0.24), rgba(212, 175, 55, 0.08));
-      border: 1px solid rgba(212, 175, 55, 0.35);
-      color: var(--gold);
-      font-size: 1.2rem;
+      border: 1px solid rgba(212, 175, 55, 0.35); color: var(--gold); font-size: 1.2rem;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
     }
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a { color: var(--text-soft); font-size: 0.96rem; transition: color var(--transition); }
+    .nav a:hover { color: var(--text); }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav a {
-      color: var(--text-soft);
-      font-size: 0.96rem;
-      transition: color var(--transition);
-    }
-
-    .nav a:hover {
-      color: var(--text);
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      padding: 86px 0 72px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 38px;
-      align-items: center;
-    }
-
-    .hero-copy p {
-      margin-top: 22px;
-      max-width: 58ch;
-      color: var(--text-soft);
-      font-size: 1.05rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 26px;
-    }
-
+    .hero { position: relative; padding: 86px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 38px; align-items: center; }
+    .hero-copy p { margin-top: 22px; max-width: 58ch; color: var(--text-soft); font-size: 1.05rem; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
     .badge {
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 14px; border-radius: 999px; font-size: 0.92rem; color: var(--text);
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08);
     }
-
     .hero-card {
-      position: relative;
-      padding: 28px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
-        linear-gradient(180deg, rgba(10, 24, 48, 0.94), rgba(8, 18, 36, 0.95));
-      border: 1px solid rgba(255,255,255,0.09);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+      position: relative; padding: 28px; border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)), linear-gradient(180deg, rgba(10, 24, 48, 0.94), rgba(8, 18, 36, 0.95));
+      border: 1px solid rgba(255,255,255,0.09); box-shadow: var(--shadow); overflow: hidden;
     }
-
     .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
+      content: ""; position: absolute; inset: -2px;
       background: conic-gradient(from 180deg at 50% 50%, rgba(212,175,55,0.3), transparent, rgba(255,255,255,0.08), transparent, rgba(212,175,55,0.18));
-      filter: blur(22px);
-      opacity: 0.6;
-      z-index: 0;
+      filter: blur(22px); opacity: 0.6; z-index: 0;
     }
+    .hero-card > * { position: relative; z-index: 1; }
+    .quote-box { padding: 22px; border-radius: 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
+    .quote-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; }
+    .quote-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; color: #10151f; font-size: 0.85rem; font-weight: 700; background: linear-gradient(135deg, #f4de97, #d4af37); }
+    .quote-price { font-size: clamp(2rem, 3vw, 3rem); font-weight: 800; letter-spacing: -0.04em; color: var(--text); }
+    .quote-price span { font-size: 1rem; font-weight: 500; color: var(--text-soft); }
+    .quote-list { list-style: none; display: grid; gap: 12px; margin-top: 16px; }
+    .quote-list li { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1px dashed rgba(255,255,255,0.1); color: var(--text-soft); font-size: 0.95rem; }
+    .quote-list strong { color: var(--text); font-weight: 600; }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .mini-stat { padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    .mini-stat strong { display: block; font-size: 1.2rem; color: var(--gold-soft); margin-bottom: 4px; }
+    .mini-stat span { font-size: 0.88rem; color: var(--text-soft); }
 
-    .hero-card > * {
-      position: relative;
-      z-index: 1;
-    }
+    .trust-strip { padding: 18px 0 10px; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .trust-item { padding: 18px; border-radius: 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--text-soft); font-size: 0.95rem; text-align: center; }
+    .trust-item strong { display: block; color: var(--text); margin-bottom: 5px; font-size: 1rem; }
 
-    .quote-box {
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .quote-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-
-    .quote-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: #10151f;
-      font-size: 0.85rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #f4de97, #d4af37);
-    }
-
-    .quote-price {
-      font-size: clamp(2rem, 3vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--text);
-    }
-
-    .quote-price span {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-soft);
-    }
-
-    .quote-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .quote-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px dashed rgba(255,255,255,0.1);
-      color: var(--text-soft);
-      font-size: 0.95rem;
-    }
-
-    .quote-list strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .mini-stat {
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .mini-stat strong {
-      display: block;
-      font-size: 1.2rem;
-      color: var(--gold-soft);
-      margin-bottom: 4px;
-    }
-
-    .mini-stat span {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-    }
-
-    /* Trust strip */
-    .trust-strip {
-      padding: 18px 0 10px;
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .trust-item {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    .trust-item strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 5px;
-      font-size: 1rem;
-    }
-
-    /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .service-card {
-      padding: 26px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.09);
-      box-shadow: var(--shadow);
-      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+      padding: 26px; border-radius: var(--radius-lg); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09); box-shadow: var(--shadow); transition: transform var(--transition), border-color var(--transition), background var(--transition);
     }
+    .service-card:hover { transform: translateY(-5px); border-color: rgba(212,175,55,0.35); background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04)); }
+    .service-icon { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 18px; color: var(--gold); background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25); font-size: 1.35rem; }
+    .service-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .service-card p { color: var(--text-soft); margin-bottom: 18px; }
+    .service-card ul { list-style: none; display: grid; gap: 10px; }
+    .service-card li { position: relative; padding-left: 18px; color: #dbe3f1; font-size: 0.95rem; }
+    .service-card li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 6px rgba(212,175,55,0.08); }
 
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(212,175,55,0.35);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    }
-
-    .service-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      color: var(--gold);
-      background: rgba(212,175,55,0.1);
-      border: 1px solid rgba(212,175,55,0.25);
-      font-size: 1.35rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: var(--text-soft);
-      margin-bottom: 18px;
-    }
-
-    .service-card ul {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .service-card li {
-      position: relative;
-      padding-left: 18px;
-      color: #dbe3f1;
-      font-size: 0.95rem;
-    }
-
-    .service-card li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 11px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 6px rgba(212,175,55,0.08);
-    }
-
-    /* CTA banner */
     .cta-banner {
-      margin-top: 42px;
-      padding: 28px;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(212,175,55,0.14), rgba(255,255,255,0.05)),
-        rgba(255,255,255,0.03);
-      border: 1px solid rgba(212,175,55,0.24);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      margin-top: 42px; padding: 28px; border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(212,175,55,0.14), rgba(255,255,255,0.05)), rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.24); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
     }
+    .cta-banner h3 { font-size: 1.45rem; margin-bottom: 8px; }
 
-    .cta-banner h3 {
-      font-size: 1.45rem;
-      margin-bottom: 8px;
+    .contact-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; align-items: start; }
+    .contact-panel, .form-panel {
+      border-radius: var(--radius-xl); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09); box-shadow: var(--shadow); padding: 28px;
     }
+    .contact-list { list-style: none; display: grid; gap: 16px; margin-top: 22px; }
+    .contact-list li { padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
+    .contact-list strong { display: block; color: var(--text); margin-bottom: 4px; }
 
-    /* Contact */
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: start;
+    form { display: grid; gap: 18px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .field { display: grid; gap: 8px; }
+    .field label { font-size: 0.92rem; color: #dfe6f4; font-weight: 500; }
+    .field input, .field select, .field textarea {
+      width: 100%; border: 1px solid rgba(255,255,255,0.12); background: rgba(4, 12, 24, 0.55);
+      color: var(--text); border-radius: 14px; padding: 14px 16px; outline: none; transition: border-color var(--transition), box-shadow var(--transition), background var(--transition); font: inherit;
     }
+    .field input::placeholder, .field textarea::placeholder { color: #8f9ab1; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(212,175,55,0.6); box-shadow: 0 0 0 4px rgba(212,175,55,0.12); background: rgba(7, 16, 31, 0.8); }
+    .field textarea { min-height: 140px; resize: vertical; }
+    .full { grid-column: 1 / -1; }
 
-    .contact-panel,
-    .form-panel {
-      border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.09);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 0.9rem; color: var(--text-soft); }
+    .status-message { margin-top: 10px; font-size: 0.95rem; font-weight: 500; min-height: 24px; }
+    .status-message.success { color: var(--success); }
+    .status-message.error { color: var(--danger); }
 
-    .contact-list {
-      list-style: none;
-      display: grid;
-      gap: 16px;
-      margin-top: 22px;
-    }
+    .site-footer { padding: 30px 0 45px; color: var(--text-soft); font-size: 0.95rem; }
+    .footer-inner { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-    .contact-list li {
-      padding: 16px 18px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .contact-list strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    form {
-      display: grid;
-      gap: 18px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .field label {
-      font-size: 0.92rem;
-      color: #dfe6f4;
-      font-weight: 500;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(4, 12, 24, 0.55);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 14px 16px;
-      outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
-      font: inherit;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: #8f9ab1;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: rgba(212,175,55,0.6);
-      box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
-      background: rgba(7, 16, 31, 0.8);
-    }
-
-    .field textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .full {
-      grid-column: 1 / -1;
-    }
-
-    .form-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .form-note {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .status-message {
-      margin-top: 10px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      min-height: 24px;
-    }
-
-    .status-message.success {
-      color: var(--success);
-    }
-
-    .status-message.error {
-      color: var(--danger);
-    }
-
-    /* Footer */
-    .site-footer {
-      padding: 30px 0 45px;
-      color: var(--text-soft);
-      font-size: 0.95rem;
-    }
-
-    .footer-inner {
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* Responsive */
     @media (max-width: 1080px) {
-      .hero-grid,
-      .contact-wrap,
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .hero-grid, .contact-wrap, .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 760px) {
-      .nav {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 56px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-
-      .form-grid,
-      .mini-stats,
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card,
-      .contact-panel,
-      .form-panel,
-      .service-card {
-        padding: 22px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .btn-group {
-        flex-direction: column;
-      }
-
-      .form-footer {
-        align-items: stretch;
-      }
+      .nav { display: none; }
+      .hero { padding-top: 56px; }
+      .section { padding: 72px 0; }
+      .form-grid, .mini-stats, .trust-grid { grid-template-columns: 1fr; }
+      .hero-card, .contact-panel, .form-panel, .service-card { padding: 22px; }
+      .btn { width: 100%; }
+      .btn-group { flex-direction: column; }
+      .form-footer { align-items: stretch; }
     }
   </style>
 </head>
@@ -702,7 +221,6 @@
         <span class="brand-mark">✦</span>
         <span>Mutuelle Premium Santé</span>
       </a>
-
       <nav class="nav" aria-label="Navigation principale">
         <a href="#services">Garanties</a>
         <a href="#contact">Contact</a>
@@ -717,18 +235,12 @@
         <div class="hero-copy">
           <div class="eyebrow">Protection santé haut de gamme</div>
           <h1>La mutuelle santé pensée pour les exigences premium.</h1>
-          <p>
-            Offrez-vous une couverture renforcée, un accompagnement personnalisé
-            et des remboursements optimisés pour vos soins du quotidien comme
-            pour vos besoins les plus spécifiques.
-          </p>
-
+          <p>Offrez-vous une couverture renforcée, un accompagnement personnalisé et des remboursements optimisés pour vos soins du quotidien comme pour vos besoins les plus spécifiques.</p>
           <div class="hero-badges">
             <span class="badge">Remboursements renforcés</span>
             <span class="badge">Accompagnement humain</span>
             <span class="badge">Souscription rapide</span>
           </div>
-
           <div class="btn-group">
             <a href="#contact" class="btn btn-primary">Demander une étude personnalisée</a>
             <a href="#services" class="btn btn-secondary">Découvrir les garanties</a>
@@ -741,29 +253,17 @@
               <span class="quote-pill">Offre Signature</span>
               <span class="muted">À partir de</span>
             </div>
-
             <div class="quote-price">29€ <span>/ mois*</span></div>
-
             <ul class="quote-list">
               <li><span>Hospitalisation</span><strong>Jusqu’à 300%</strong></li>
               <li><span>Optique premium</span><strong>Forfaits renforcés</strong></li>
               <li><span>Dentaire</span><strong>Implants & prothèses</strong></li>
               <li><span>Médecines douces</span><strong>Jusqu’à 8 séances/an</strong></li>
             </ul>
-
             <div class="mini-stats">
-              <div class="mini-stat">
-                <strong>24h</strong>
-                <span>pour une réponse initiale</span>
-              </div>
-              <div class="mini-stat">
-                <strong>100%</strong>
-                <span>parcours digitalisé</span>
-              </div>
-              <div class="mini-stat">
-                <strong>5★</strong>
-                <span>expérience premium</span>
-              </div>
+              <div class="mini-stat"><strong>24h</strong><span>pour une réponse initiale</span></div>
+              <div class="mini-stat"><strong>100%</strong><span>parcours digitalisé</span></div>
+              <div class="mini-stat"><strong>5★</strong><span>expérience premium</span></div>
             </div>
           </div>
         </aside>
@@ -772,22 +272,10 @@
 
     <section class="trust-strip">
       <div class="container trust-grid">
-        <div class="trust-item">
-          <strong>Protection renforcée</strong>
-          Des garanties modulables pour chaque profil.
-        </div>
-        <div class="trust-item">
-          <strong>Accompagnement dédié</strong>
-          Un suivi humain et réactif à chaque étape.
-        </div>
-        <div class="trust-item">
-          <strong>Clarté des prestations</strong>
-          Une lecture simple de vos remboursements.
-        </div>
-        <div class="trust-item">
-          <strong>Souscription fluide</strong>
-          Un parcours pensé pour convertir efficacement.
-        </div>
+        <div class="trust-item"><strong>Protection renforcée</strong>Des garanties modulables pour chaque profil.</div>
+        <div class="trust-item"><strong>Accompagnement dédié</strong>Un suivi humain et réactif à chaque étape.</div>
+        <div class="trust-item"><strong>Clarté des prestations</strong>Une lecture simple de vos remboursements.</div>
+        <div class="trust-item"><strong>Souscription fluide</strong>Un parcours pensé pour convertir efficacement.</div>
       </div>
     </section>
 
@@ -796,21 +284,13 @@
         <div class="section-header">
           <div class="eyebrow">Garanties & services</div>
           <h2>Une couverture complète, élégante dans sa promesse et solide dans ses prestations.</h2>
-          <p class="lead">
-            Cette grille de services met en valeur une offre mutuelle premium,
-            idéale pour une landing page haut de gamme avec discours rassurant
-            et orientation conversion.
-          </p>
+          <p class="lead">Cette grille de services met en valeur une offre mutuelle premium, idéale pour une landing page haut de gamme avec discours rassurant et orientation conversion.</p>
         </div>
-
         <div class="services-grid">
           <article class="service-card">
             <div class="service-icon">✚</div>
             <h3>Hospitalisation & soins courants</h3>
-            <p>
-              Une protection conçue pour limiter le reste à charge et sécuriser
-              vos dépenses essentielles.
-            </p>
+            <p>Une protection conçue pour limiter le reste à charge et sécuriser vos dépenses essentielles.</p>
             <ul>
               <li>Prise en charge renforcée des frais d’hospitalisation</li>
               <li>Consultations généralistes et spécialistes mieux remboursées</li>
@@ -818,13 +298,10 @@
               <li>Assistance avant, pendant et après hospitalisation</li>
             </ul>
           </article>
-
           <article class="service-card">
             <div class="service-icon">◉</div>
             <h3>Optique & dentaire premium</h3>
-            <p>
-              Une réponse haut de gamme pour les postes les plus sensibles du budget santé.
-            </p>
+            <p>Une réponse haut de gamme pour les postes les plus sensibles du budget santé.</p>
             <ul>
               <li>Montures, verres complexes et lentilles mieux couverts</li>
               <li>Remboursements renforcés sur implants et prothèses</li>
@@ -832,13 +309,10 @@
               <li>Accès à des réseaux de soins partenaires</li>
             </ul>
           </article>
-
           <article class="service-card">
             <div class="service-icon">♥</div>
             <h3>Prévention & bien-être</h3>
-            <p>
-              Une mutuelle moderne ne se limite pas au remboursement : elle accompagne durablement.
-            </p>
+            <p>Une mutuelle moderne ne se limite pas au remboursement : elle accompagne durablement.</p>
             <ul>
               <li>Médecines douces et consultations de prévention</li>
               <li>Soutien psychologique et accompagnement bien-être</li>
@@ -846,13 +320,10 @@
               <li>Approche orientée qualité de vie</li>
             </ul>
           </article>
-
           <article class="service-card">
             <div class="service-icon">⌘</div>
             <h3>Offres famille & indépendants</h3>
-            <p>
-              Des niveaux de couverture adaptés à la réalité des foyers, dirigeants et professions libérales.
-            </p>
+            <p>Des niveaux de couverture adaptés à la réalité des foyers, dirigeants et professions libérales.</p>
             <ul>
               <li>Formules sur mesure pour couples, familles et seniors</li>
               <li>Solutions dédiées aux travailleurs non salariés</li>
@@ -860,13 +331,10 @@
               <li>Équilibre entre budget, confort et protection</li>
             </ul>
           </article>
-
           <article class="service-card">
             <div class="service-icon">⟡</div>
             <h3>Parcours digital fluide</h3>
-            <p>
-              Une expérience premium passe aussi par la simplicité de la gestion quotidienne.
-            </p>
+            <p>Une expérience premium passe aussi par la simplicité de la gestion quotidienne.</p>
             <ul>
               <li>Demande de devis rapide et intuitive</li>
               <li>Suivi des demandes via formulaire connecté</li>
@@ -874,13 +342,10 @@
               <li>Architecture prête à être connectée à Google Apps Script</li>
             </ul>
           </article>
-
           <article class="service-card">
             <div class="service-icon">★</div>
             <h3>Conseil personnalisé</h3>
-            <p>
-              Une approche relationnelle premium pour rassurer et accompagner la prise de décision.
-            </p>
+            <p>Une approche relationnelle premium pour rassurer et accompagner la prise de décision.</p>
             <ul>
               <li>Étude personnalisée selon le profil et les attentes</li>
               <li>Prise de contact rapide par un conseiller</li>
@@ -889,13 +354,10 @@
             </ul>
           </article>
         </div>
-
         <div class="cta-banner">
           <div>
             <h3>Besoin d’une version encore plus orientée conversion ?</h3>
-            <p class="muted">
-              Cette base peut facilement être enrichie avec FAQ, avis clients, simulateur ou comparatif d’offres.
-            </p>
+            <p class="muted">Cette base peut facilement être enrichie avec FAQ, avis clients, simulateur ou comparatif d’offres.</p>
           </div>
           <a href="#contact" class="btn btn-primary">Obtenir un devis</a>
         </div>
@@ -907,24 +369,11 @@
         <div class="contact-panel">
           <div class="eyebrow">Prise de contact</div>
           <h2>Parlons de votre couverture idéale.</h2>
-          <p class="lead">
-            Remplissez le formulaire pour être recontacté rapidement. La structure
-            ci-dessous est déjà prête pour envoyer les données à un Google Apps Script.
-          </p>
-
+          <p class="lead">Remplissez le formulaire pour être recontacté rapidement. La structure ci-dessous est déjà prête pour envoyer les données à un Google Apps Script.</p>
           <ul class="contact-list">
-            <li>
-              <strong>Analyse personnalisée</strong>
-              Nous adaptons l’offre selon votre situation et vos priorités.
-            </li>
-            <li>
-              <strong>Réponse rapide</strong>
-              Le formulaire est pensé pour une intégration simple côté front.
-            </li>
-            <li>
-              <strong>Expérience premium</strong>
-              Design haut de gamme, ton rassurant et conversion optimisée.
-            </li>
+            <li><strong>Analyse personnalisée</strong>Nous adaptons l’offre selon votre situation et vos priorités.</li>
+            <li><strong>Réponse rapide</strong>Le formulaire est pensé pour une intégration simple côté front.</li>
+            <li><strong>Expérience premium</strong>Design haut de gamme, ton rassurant et conversion optimisée.</li>
           </ul>
         </div>
 
@@ -935,17 +384,14 @@
                 <label for="fullName">Nom complet</label>
                 <input type="text" id="fullName" name="fullName" placeholder="Votre nom complet" required />
               </div>
-
               <div class="field">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="votre@email.com" required />
               </div>
-
               <div class="field">
                 <label for="phone">Téléphone</label>
                 <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00" required />
               </div>
-
               <div class="field">
                 <label for="profile">Profil</label>
                 <select id="profile" name="profile" required>
@@ -957,27 +403,16 @@
                   <option value="entreprise">Entreprise</option>
                 </select>
               </div>
-
               <div class="field full">
                 <label for="message">Votre besoin</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Décrivez votre besoin, vos garanties souhaitées, votre situation ou votre budget."
-                  required
-                ></textarea>
+                <textarea id="message" name="message" placeholder="Décrivez votre besoin, vos garanties souhaitées, votre situation ou votre budget." required></textarea>
               </div>
             </div>
 
             <div class="form-footer">
-              <p class="form-note">
-                En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.
-              </p>
-              <button type="submit" class="btn btn-primary" id="submitBtn">
-                Envoyer la demande
-              </button>
+              <p class="form-note">En envoyant ce formulaire, vous acceptez d’être recontacté au sujet de votre demande.</p>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer la demande</button>
             </div>
-
             <p id="formStatus" class="status-message" aria-live="polite"></p>
           </form>
         </div>
@@ -992,68 +427,59 @@
     </div>
   </footer>
 
- <script>
-  // Remplace par ton URL de déploiement "Web App"
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyT_TcePN8AdrWLRVvSyDOObXi9IhI1vKNsJgL3De_K5n6I9xkueA6jdu3u9EXd93pu/exec";
+  <script>
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby4rqqZZQXObr-xb2p5qwkpmeDDs6Kzq71GcKFZhoRjQ9en2flhp6PELA0ew9658DKD/exec";
 
-const form = document.getElementById("contactForm");
-const statusEl = document.getElementById("formStatus");
-const submitBtn = document.getElementById("submitBtn");
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
 
-// Fonction pour récupérer l'IP du visiteur
-async function getUserIP() {
-  try {
-    const res = await fetch("https://api.ipify.org?format=json");
-    const json = await res.json();
-    return json.ip;
-  } catch (err) {
-    return "Indisponible";
-  }
-}
+    async function getUserIP() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const json = await res.json();
+        return json.ip;
+      } catch (err) {
+        return "Indisponible";
+      }
+    }
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  statusEl.textContent = "Traitement de votre demande de prestige...";
-  statusEl.className = "status-message";
-  submitBtn.disabled = true;
-  const originalBtnText = submitBtn.textContent;
-  submitBtn.textContent = "Transmission...";
+      statusEl.textContent = "Traitement de votre demande...";
+      statusEl.className = "status-message";
+      submitBtn.disabled = true;
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = "Transmission...";
 
-  // Récupération des données du formulaire
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
-  
-  data.ip = await getUserIP();
-  data.source = "landing-page-mutuelle-v2";
-  data.sentAt = new Date().toLocaleString('fr-FR');
+      // Préparation du FormData
+      const formData = new FormData(form);
+      formData.append("ip", await getUserIP());
+      formData.append("source", "landing-page-mutuelle-v2");
+      formData.append("sentAt", new Date().toLocaleString('fr-FR'));
 
-  // Conversion en paramètres d'URL pour contourner les restrictions CORS de JSON
-  const payload = new URLSearchParams(data);
+      try {
+        // Envoi direct via FormData
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
 
-  try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors", // Requis pour Google Apps Script
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: payload.toString()
+        statusEl.textContent = "Merci. Un conseiller premium vous contactera sous 24h.";
+        statusEl.classList.add("success");
+        form.reset();
+
+      } catch (error) {
+        console.error("Erreur:", error);
+        statusEl.textContent = "Service momentanément indisponible. Veuillez nous contacter par téléphone.";
+        statusEl.classList.add("error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     });
-
-    statusEl.textContent = "Merci. Un conseiller premium vous contactera sous 24h.";
-    statusEl.classList.add("success");
-    form.reset();
-
-  } catch (error) {
-    console.error("Erreur:", error);
-    statusEl.textContent = "Service momentanément indisponible. Veuillez nous contacter par téléphone.";
-    statusEl.classList.add("error");
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalBtnText;
-  }
-});
-</script>
+  </script>
 </body>
 </html>
