@@ -994,53 +994,63 @@
 
  <script>
   // Remplace par ton URL de déploiement "Web App"
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCeVZIoCA0i2uDZNSaV6yEv7vnzTHUl-JyPq92bj6ZqWx40Lm7Vk64glBG5Cq0oTJB/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCeVZIoCA0i2uDZNSaV6yEv7vnzTHUl-JyPq92bj6ZqWx40Lm7Vk64glBG5Cq0oTJB/exec";
 
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-  const submitBtn = document.getElementById("submitBtn");
+const form = document.getElementById("contactForm");
+const statusEl = document.getElementById("formStatus");
+const submitBtn = document.getElementById("submitBtn");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+// Fonction pour récupérer l'IP du visiteur
+async function getUserIP() {
+  try {
+    const res = await fetch("https://api.ipify.org?format=json");
+    const json = await res.json();
+    return json.ip;
+  } catch (err) {
+    return "Indisponible";
+  }
+}
 
-    // Reset interface
-    statusEl.textContent = "Traitement de votre demande de prestige...";
-    statusEl.className = "status-message";
-    submitBtn.disabled = true;
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = "Transmission...";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    // Récupération des données
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    data.source = "landing-page-mutuelle-v2";
-    data.sentAt = new Date().toLocaleString('fr-FR');
+  // Reset interface
+  statusEl.textContent = "Traitement de votre demande de prestige...";
+  statusEl.className = "status-message";
+  submitBtn.disabled = true;
+  const originalBtnText = submitBtn.textContent;
+  submitBtn.textContent = "Transmission...";
 
-    try {
-      // Utilisation de URLSearchParams pour éviter les problèmes de pré-vol CORS 
-      // fréquents avec le format JSON sur Apps Script
-      const response = await fetch(APPS_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors", // Mode sécurisé pour Apps Script
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
+  // Récupération des données du formulaire
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  
+  // Ajout de l'IP et des métadonnées
+  data.ip = await getUserIP();
+  data.source = "landing-page-mutuelle-v2";
+  data.sentAt = new Date().toLocaleString('fr-FR');
 
-      // Note : Avec no-cors, on ne peut pas lire le JSON de réponse, 
-      // mais si l'exécution arrive ici sans erreur, c'est que c'est envoyé.
-      statusEl.textContent = "Merci. Un conseiller premium vous contactera sous 24h.";
-      statusEl.classList.add("success");
-      form.reset();
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
 
-    } catch (error) {
-      console.error("Erreur:", error);
-      statusEl.textContent = "Service momentanément indisponible. Veuillez nous contacter par téléphone.";
-      statusEl.classList.add("error");
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalBtnText;
-    }
-  });
+    statusEl.textContent = "Merci. Un conseiller premium vous contactera sous 24h.";
+    statusEl.classList.add("success");
+    form.reset();
+
+  } catch (error) {
+    console.error("Erreur:", error);
+    statusEl.textContent = "Service momentanément indisponible. Veuillez nous contacter par téléphone.";
+    statusEl.classList.add("error");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
+  }
+});
 </script>
 </body>
 </html>
